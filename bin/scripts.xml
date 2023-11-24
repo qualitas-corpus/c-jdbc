@@ -1,0 +1,182 @@
+<scripts>
+  <!--                           -->
+  <!-- Squirrel Script           -->
+  <!--                           -->
+  <script name="squirrel">
+    <java class="net.sourceforge.squirrel_sql.client.Main">
+      <arg name="-settingsdir" base="SQUIRREL_HOME"/>
+      <arg name="-loggingConfigFile" value="log4j.properties" 
+        base="SQUIRREL_HOME"/>
+      <arg name="-squirrelHome" base="SQUIRREL_SQL_HOME"/>
+    </java>
+    <definition name="HSQL_HOME" value="3rdparty/hsqldb" base="CJDBC_HOME"/>
+    <definition name="SQUIRREL_HOME" value="3rdparty/squirrel" 
+      base="CJDBC_HOME"/>
+    <definition name="CJDBC_DEFAULT_JVMDEBUG_PORT" value="52001"/>
+    <classpath>
+      <element path="drivers/c-jdbc-driver.jar"/>
+      <external path="lib/squirrel-sql.jar" base="SQUIRREL_HOME"/>
+      <external path="lib/log4j.jar" base="SQUIRREL_HOME"/>
+      <external path="lib/nanoxml-2.1.jar" base="SQUIRREL_HOME"/>
+      <external path="lib/fw.jar" base="SQUIRREL_HOME"/>
+      <external path="" base="SQUIRREL_HOME"/>
+      <external path="lib/hsqldb.jar" base="HSQL_HOME"/>
+    </classpath>
+  </script>
+  
+  <!--                           -->
+  <!-- iSQL Script               -->
+  <!--                           -->
+  <script name="isql">
+    <java class="com.zerog.lax.LAX" dir="ISQL_HOME">
+      <arg value="iSQL-Viewer.lax"/>
+    </java>
+    <definition name="HSQL_HOME" value="3rdparty/hsqldb" base="CJDBC_HOME"/>
+    <definition name="ISQL_HOME" value="3rdparty/iSQL" base="CJDBC_HOME"/>
+    <definition name="CJDBC_DEFAULT_JVMDEBUG_PORT" value="52002"/>
+    <classpath>
+      <element path="drivers/c-jdbc-driver.jar"/>
+      <external path="lib/bsf.jar" base="ISQL_HOME"/>
+      <external path="lib/isql-core.jar" base="ISQL_HOME"/>
+      <external path="lib/jpython1.1.jar" base="ISQL_HOME"/>
+      <external path="lib/lax.jar" base="ISQL_HOME"/>
+      <external path="lib/mozilla-rhino" base="ISQL_HOME"/>
+      <external path="lib/hsqldb.jar" base="HSQL_HOME"/>
+    </classpath>
+  </script>
+  
+  <!--                           -->
+  <!-- Wizard Script             -->
+  <!--                           -->
+  <script name="wizard">
+    <java class="org.objectweb.cjdbc.console.wizard.XmlWizard">
+      <option 
+        value="-Dswing.defaultlaf=net.sourceforge.mlf.metouia.MetouiaLookAndFeel"/>
+    </java>
+    <classpath>
+      <element path="lib/metouia.jar"/>
+      <element path="lib/dom4j-1.5-beta-2.jar"/>
+      <element path="lib/jaxen-1.1-beta-2.jar"/>
+      <element path="config/language"/>
+      <element path="config"/>
+      <element path="lib/c-jdbc-console.jar"/>
+      <element path="lib/looks-1.3b1.jar"/>
+      <element path="xml"/>
+      <element path="lib/crimson.jar"/>
+    </classpath>
+  </script>
+  
+  <!--                           -->
+  <!-- Request Player Script     -->
+  <!--                           -->
+  <script name="requestplayer">
+    <java class="org.objectweb.cjdbc.requestplayer.ClientEmulator"/>
+    <definition name="JVM_OPTIONS" value="&quot;-Xms200m -Xmx200m&quot;"/>
+    <definition name="CJDBC_DEFAULT_JVMDEBUG_PORT" value="52003"/>
+    <classpath>
+      <element path="lib/commons-cli.jar"/>
+      <element path="lib/c-jdbc-request-player.jar"/>
+      <element path="drivers/c-jdbc-driver.jar"/>
+      <element path="drivers"/>
+      <element path="config"/>
+    </classpath>
+  </script>
+  
+  <!--                           -->
+  <!-- Xml Validator Script      -->
+  <!--                           -->
+  <script name="xmlvalidator">
+    <java class="org.objectweb.cjdbc.common.xml.XmlValidator">
+    </java>
+    <definition name="SAX_PARSER_CLASS" 
+      value="org.apache.crimson.parser.XMLReaderImpl" />
+    <classpath>
+      <element path="config/controller"/>
+      <element path="config/virtualdatabase"/>
+      <element path="config"/>
+      <element path="xml"/>
+      <element path="lib/crimson.jar"/>
+    </classpath>
+  </script>
+  
+  <!--                           -->
+  <!-- Console Script            -->
+  <!--                           -->
+  <script name="console">
+    <java class="org.objectweb.cjdbc.console.text.ConsoleLauncher -t">
+      <option 
+        value="-Dswing.defaultlaf=net.sourceforge.mlf.metouia.MetouiaLookAndFeel"/>
+    </java>
+    <definition name="CJDBC_DEFAULT_JVMDEBUG_PORT" value="53001"/>
+    <classpath>
+      <element path="lib/metouia.jar"/>
+      <element path="doc/userGuide/html"/>
+      <element path="xml"/>
+      <element path="lib/crimson.jar"/>
+      <element path="lib/jline.jar"/>
+      <element path="config/language"/>
+      <element path="lib/c-jdbc-console.jar"/>
+      <element path="lib/jcommon.jar"/>
+      <element path="lib/jfreechart.jar"/>
+      <element path="drivers/c-jdbc-driver.jar"/>
+      <element path="lib/commons-cli.jar"/>
+      <element path="lib/jmx/mx4j.jar"/>
+      <element path="lib/jmx/mx4j-remote.jar"/>
+      <element path="lib/jmx/mx4j-tools.jar"/>
+      <element path="lib/log4j.jar"/>
+      <element path="lib/dom4j-1.5-beta-2.jar"/>
+      <element path="lib/jaxen-1.1-beta-2.jar"/>
+    </classpath>
+  </script>
+  
+  <!--                           -->
+  <!-- Controller Script         -->
+  <!--                           -->
+  <script name="controller">
+    <java class="org.objectweb.cjdbc.controller.core.Controller">
+      <option name="-Dcjdbc.home" base="CJDBC_HOME" value=""/>
+      <option name="-Dcjdbc.log" base="CJDBC_LOG" value=""/>
+      <option name="-Djava.security.policy" base="CJDBC_HOME" 
+        value="/config/java.policy"/>
+    </java>
+    <definition name="CJDBC_CONFIG" value="config" base="CJDBC_HOME"/>
+    <definition name="CJDBC_LOG" value="log" base="CJDBC_HOME"/>
+    <definition name="CJDBC_DEFAULT_JVMDEBUG_PORT" value="51001"/>
+    <!-- Remote debugging option, uncomment to use
+    <definition name="JVM_OPTIONS" 
+      value="&quot;-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=$CJDBC_DEFAULT_JVMDEBUG_PORT&quot;"/>
+      -->
+    <classpath>
+      <external path="language" base="CJDBC_CONFIG"/>
+      <external path="controller" base="CJDBC_CONFIG"/>
+      <external path="virtualdatabase" base="CJDBC_CONFIG"/>
+      <element path="lib/jakarta-regexp-1.4-dev.jar"/>
+      <element path="lib/octopus/Octopus.jar"/>
+      <element path="lib/octopus/OctopusGenerator.jar"/>
+      <element path="lib/octopus/csvjdbc.jar"/>
+      <element path="lib/c-jdbc-controller.jar"/>
+      <element path="lib/octopus"/>
+      <element path="drivers/c-jdbc-driver.jar"/>
+      <element path="3rdparty/hsqldb/lib/hsqldb.jar"/>
+      <element path="drivers"/>
+      <external path="" base="CJDBC_CONFIG"/>
+      <element path="lib/crimson.jar"/>
+      <element path="xml"/>
+      <element path="lib/jgroups-core.jar"/>
+      <element path="lib/dom4j-1.5-beta-2.jar"/>
+      <element path="lib/jaxen-1.1-beta-2.jar"/>
+      <element path="lib/log4j.jar"/>
+      <element path="lib/commons-cli.jar"/>
+      <element path="lib/jmx/mx4j-tools.jar"/>
+      <element path="lib/jmx/xsl"/>
+      <element path="lib/jmx/xml-apis.jar"/>
+      <element path="lib/jmx/mx4j.jar"/>
+      <element path="lib/jmx/mx4j-remote.jar"/>
+      <element path="lib/jmx/xalan.jar"/>
+      <element path="lib/mail/activation.jar"/>
+      <element path="lib/mail/mail.jar"/>
+      <element path="lib/tribe.jar"/>
+      <element path="lib/commons-logging.jar"/>
+    </classpath>
+  </script>
+</scripts>
